@@ -1,0 +1,108 @@
+import type { AnalysisCategory } from "./types";
+
+/**
+ * Per-category calibration for the realistic improvement a client can expect
+ * after a course of THREE hydrating skin-booster sessions ("Natural" strength).
+ *
+ * Ceilings are grounded in what hydrating / collagen-stimulating boosters
+ * actually deliver — visible gains in hydration, radiance, texture, tone and
+ * softened fine lines — NOT dramatic, filler-style change. The expected gain
+ * scales with how much visible room a category has (lower score => more
+ * headroom => bigger expected gain), capped at the evidence-based ceiling.
+ */
+type Calibration = {
+  /** "gain" => skin gets better by X%. "softened" => lines softened by ~X%. */
+  kind: "gain" | "softened";
+  /** Fraction of the remaining headroom (100 - score) we expect to recover. */
+  factor: number;
+  /** Minimum expected effect, so even great skin shows a believable lift. */
+  floor: number;
+  /** Realistic maximum for this category over 3 sessions. */
+  ceiling: number;
+};
+
+const CALIBRATIONS: Record<string, Calibration> = {
+  Hydration: { kind: "gain", factor: 0.5, floor: 15, ceiling: 40 },
+  Radiance: { kind: "gain", factor: 0.45, floor: 15, ceiling: 35 },
+  "Texture & pores": { kind: "gain", factor: 0.4, floor: 12, ceiling: 30 },
+  "Tone & redness": { kind: "gain", factor: 0.45, floor: 15, ceiling: 35 },
+  "Fine lines": { kind: "softened", factor: 0.35, floor: 10, ceiling: 25 },
+};
+
+const clamp = (n: number, lo: number, hi: number) =>
+  Math.max(lo, Math.min(hi, n));
+
+/** Round to the nearest 5 for clean, non-spuriously-precise ranges. */
+const snap5 = (n: number) => Math.round(n / 5) * 5;
+
+export interface ExpectedImprovement {
+  kind: "gain" | "softened";
+  /** Low end of the expected range (percent). */
+  low: number;
+  /** High end of the expected range (percent). */
+  high: number;
+  /** Short label for UI, e.g. "+30–40% after 3 sessions" or "softened ~20%". */
+  label: string;
+}
+
+/**
+ * Turn a Claude skin-category score into an honest, deterministic expectation
+ * of improvement after 3 sessions. Returns null for categories a booster does
+ * not meaningfully address (so the UI can stay silent rather than over-promise).
+ */
+export function expectedImprovement(
+  category: AnalysisCategory,
+): ExpectedImprovement | null {
+  const cal = CALIBRATIONS[category.label];
+  if (!cal) return null;
+
+  const score = clamp(category.score, 0, 100);
+  const headroom = 100 - score;
+  const mid = clamp(headroom * cal.factor, cal.floor, cal.ceiling);
+
+  let low = snap5(clamp(mid - 5, cal.floor, cal.ceiling));
+  let high = snap5(clamp(mid + 5, cal.floor, cal.ceiling));
+  if (low === high) low = Math.max(0, low - 5); // keep it a visible range
+
+  const label =
+    cal.kind === "softened"
+      ? `softened ~${snap5(mid)}%`
+      : `+${low}–${high}% after 3 sessions`;
+
+  return { kind: cal.kind, low, high, label };
+}
+
+/**
+ * Map a free-text annotation area (e.g. "Periorbital lines (crow's feet)") to
+ * the skin category it best relates to, so a per-area callout can show the
+ * realistic expected improvement for that spot. Keyword-matched, returns the
+ * category label or null when nothing sensible matches.
+ */
+function areaToCategoryLabel(area: string): string | null {
+  const a = area.toLowerCase();
+  if (/(line|wrinkle|crease|crow|forehead|glabella|frown|perioral|marionette|nasolabial|fold)/.test(a))
+    return "Fine lines";
+  if (/(texture|pore|rough|smooth)/.test(a)) return "Texture & pores";
+  if (/(redness|red|tone|pigment|blotch|even|dark spot|melasma)/.test(a))
+    return "Tone & redness";
+  if (/(radian|glow|dull|luminos|bright)/.test(a)) return "Radiance";
+  if (/(hydrat|dry|dehydrat|plump|cheek|under-eye|tear trough)/.test(a))
+    return "Hydration";
+  return null;
+}
+
+/**
+ * Expected improvement for a specific flagged area, resolved through the
+ * matching category's current score. Returns null when the area maps to no
+ * category or that category is absent from the analysis.
+ */
+export function expectedForArea(
+  area: string,
+  categories: AnalysisCategory[],
+): ExpectedImprovement | null {
+  const label = areaToCategoryLabel(area);
+  if (!label) return null;
+  const category = categories.find((c) => c.label === label);
+  if (!category) return null;
+  return expectedImprovement(category);
+}
