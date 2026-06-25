@@ -6,6 +6,9 @@ import type { SkinAnalysis } from "@/lib/types";
 import AnnotatedFace from "./AnnotatedFace";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import AfterCallouts from "./AfterCallouts";
+import ReviewsSlider from "./ReviewsSlider";
+import CaseStudy from "./CaseStudy";
+import VeluriaRejuvenation from "./VeluriaRejuvenation";
 import { expectedImprovement } from "@/lib/expectations";
 import {
   composeBeforeAfter,
@@ -15,6 +18,38 @@ import {
 
 const BOOKING_URL =
   process.env.NEXT_PUBLIC_BOOKING_URL ?? "https://drmshaclinic.com";
+
+// Dr Sha's online booking calendar for the complimentary phone consultation.
+const CALENDAR_URL =
+  process.env.NEXT_PUBLIC_CALENDAR_URL ??
+  "https://link.drmshaclinic.com/widget/booking/AkcdoWX6eMf2yJvKs6fp";
+
+function PhoneConsultButton({
+  variant = "primary",
+  className = "",
+}: {
+  variant?: "primary" | "ghost";
+  className?: string;
+}) {
+  return (
+    <a
+      href={CALENDAR_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${variant === "primary" ? "btn-serum" : "btn-ghost"} ${className}`}
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="shrink-0">
+        <path
+          d="M3 3.5C3 3 3.4 2.5 4 2.5h1.6c.4 0 .8.3.9.7l.6 2.2c.1.4 0 .8-.3 1l-1 .9c.7 1.4 1.8 2.5 3.2 3.2l.9-1c.2-.3.6-.4 1-.3l2.2.6c.4.1.7.5.7.9V13c0 .6-.5 1-1 1A10 10 0 0 1 3 3.5Z"
+          stroke="currentColor"
+          strokeWidth="1.3"
+          strokeLinejoin="round"
+        />
+      </svg>
+      Free Online Phone Consultation
+    </a>
+  );
+}
 
 const PREVIEW_STEPS = [
   "Reading your skin map…",
@@ -232,6 +267,12 @@ export default function AnalysisReport({
           AI-simulated illustration of a possible outcome. Individual results vary
           and are not guaranteed. Not medical advice.
         </p>
+        <div className="mt-6 flex flex-col items-center gap-2">
+          <PhoneConsultButton />
+          <p className="text-xs text-plum-mute">
+            Discuss your preview with Dr Sha — no cost, no obligation.
+          </p>
+        </div>
       </section>
 
       {/* Assessment map */}
@@ -292,15 +333,33 @@ export default function AnalysisReport({
         </div>
       </section>
 
-      {/* Dr Sha recommendation */}
+      {/* Veluria rejuvenation — how Veluria helps this patient */}
       <section className="animate-fade-scale" style={{ animationDelay: "200ms" }}>
-        <div className="relative overflow-hidden rounded-[2rem] border border-[#E8E8E8] bg-pearl-deep p-8 sm:p-10">
-          <p className="eyebrow">The Recommendation</p>
-          <h3 className="display mt-3 text-3xl text-plum">How Dr Sha can help</h3>
-          <p className="mt-4 leading-relaxed text-plum">
-            {analysis.veluriaRecommendation}
-          </p>
+        <VeluriaRejuvenation
+          categories={analysis.categories}
+          cta={<PhoneConsultButton />}
+        />
+      </section>
+
+      {/* Case study: real before & after */}
+      <section className="animate-fade-scale" style={{ animationDelay: "205ms" }}>
+        <div className="mb-6 text-center">
+          <p className="eyebrow">Real results</p>
+          <h3 className="display mt-2 text-3xl text-plum">A Dr Sha before &amp; after</h3>
         </div>
+        <CaseStudy />
+        <div className="mt-6 flex justify-center">
+          <PhoneConsultButton />
+        </div>
+      </section>
+
+      {/* Patient reviews */}
+      <section className="animate-fade-scale" style={{ animationDelay: "210ms" }}>
+        <div className="mb-6 text-center">
+          <p className="eyebrow">Loved by patients</p>
+          <h3 className="display mt-2 text-3xl text-plum">What people say about Dr Sha</h3>
+        </div>
+        <ReviewsSlider />
       </section>
 
       {/* Save / open your analysis */}
@@ -340,9 +399,16 @@ export default function AnalysisReport({
 
       {/* CTA */}
       <section className="text-center animate-fade-scale" style={{ animationDelay: "240ms" }}>
-        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-serum">
-          Book a consultation
-        </a>
+        <p className="eyebrow">Your next step</p>
+        <h3 className="display mt-2 mb-6 text-3xl text-plum">
+          Ready when you are
+        </h3>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <PhoneConsultButton />
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+            Explore treatments
+          </a>
+        </div>
         <button
           onClick={onRestart}
           className="no-print mt-5 block w-full text-sm text-plum-mute underline-offset-4 transition hover:text-plum hover:underline"

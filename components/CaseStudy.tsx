@@ -2,13 +2,11 @@
 
 import { useCallback, useRef, useState } from "react";
 
-export default function BeforeAfterSlider({
-  before,
-  after,
-}: {
-  before: string;
-  after: string;
-}) {
+const BEFORE_SRC = "/assets/case-studies/facial-rejuvenation-before.webp";
+const AFTER_SRC = "/assets/case-studies/facial-rejuvenation-after.webp";
+
+/** Portrait (9:16) draggable before/after comparison, tuned for case-study photos. */
+function PortraitCompare({ before, after }: { before: string; after: string }) {
   const [pos, setPos] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
@@ -37,7 +35,7 @@ export default function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative aspect-square w-full cursor-ew-resize touch-none select-none overflow-hidden rounded-[1.6rem] border border-white/70 bg-pearl-deep shadow-dew"
+      className="relative mx-auto aspect-[9/16] w-full max-w-[300px] cursor-ew-resize touch-none select-none overflow-hidden rounded-[1.4rem] border border-white/70 bg-pearl-deep shadow-dew sm:max-w-[340px]"
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -47,7 +45,7 @@ export default function BeforeAfterSlider({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={after}
-        alt="Simulated result"
+        alt="After treatment with Dr Sha"
         className="absolute inset-0 h-full w-full object-cover"
         draggable={false}
       />
@@ -59,7 +57,7 @@ export default function BeforeAfterSlider({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={before}
-          alt="Your photo"
+          alt="Before treatment"
           className="absolute inset-0 h-full w-full object-cover"
           draggable={false}
         />
@@ -83,6 +81,54 @@ export default function BeforeAfterSlider({
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <path d="M9 7l-5 5 5 5M15 7l5 5-5 5" />
           </svg>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const TAGS = ["Anti-wrinkle", "Dermal filler", "Skin rejuvenation"];
+
+export default function CaseStudy() {
+  return (
+    <div className="overflow-hidden rounded-[2rem] border border-[#E8E8E8] bg-pearl-deep p-6 sm:p-8">
+      <div className="grid items-center gap-8 md:grid-cols-2">
+        {/* Comparison */}
+        <div>
+          <PortraitCompare before={BEFORE_SRC} after={AFTER_SRC} />
+          <p className="mt-3 text-center text-[0.7rem] uppercase tracking-[0.16em] text-plum-mute">
+            Drag the slider to compare
+          </p>
+        </div>
+
+        {/* Write-up */}
+        <div>
+          <p className="eyebrow">Real patient · Case study</p>
+          <h4 className="display mt-2 text-2xl text-plum sm:text-3xl">
+            Facial rejuvenation
+          </h4>
+          <p className="mt-4 leading-relaxed text-plum">
+            A bespoke facial rejuvenation plan designed by Dr Sha — softening
+            fine lines, restoring lost volume and refreshing overall skin tone
+            for a naturally rested, more youthful result that still looks like
+            you.
+          </p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {TAGS.map((t) => (
+              <span
+                key={t}
+                className="rounded-full border border-[#E0E0E0] bg-white/70 px-3 py-1 text-[0.7rem] font-medium text-plum-soft"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <p className="mt-5 text-xs italic text-plum-mute">
+            Real patient of Dr Sha. Eyes covered for privacy. Individual results
+            vary and are not guaranteed.
+          </p>
         </div>
       </div>
     </div>

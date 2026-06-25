@@ -42,7 +42,7 @@ function FaceMapLoader() {
       <div className="relative h-[15.5rem] w-[15.5rem] overflow-hidden rounded-[2rem] border border-white/80 bg-white/45 shadow-glass backdrop-blur-md sm:h-[17rem] sm:w-[17rem]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/assets/face-map-premium.png"
+          src="/assets/face-map-premium.webp"
           alt=""
           aria-hidden="true"
           className="h-full w-full animate-soft-focus-reveal object-cover"
