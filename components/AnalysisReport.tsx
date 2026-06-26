@@ -18,10 +18,10 @@ import {
 const BOOKING_URL =
   process.env.NEXT_PUBLIC_BOOKING_URL ?? "https://odaesthetics-swindon.com/";
 
-// O.D. Aesthetics booking link for the complimentary consultation.
+// O.D. Aesthetics booking calendar for the free online phone consultation.
 const CALENDAR_URL =
   process.env.NEXT_PUBLIC_CALENDAR_URL ??
-  "https://odaesthetics-swindon.com/";
+  "https://api.leadconnectorhq.com/widget/booking/EPirJq269h39RT81x9X1";
 
 function PhoneConsultButton({
   variant = "primary",
