@@ -160,7 +160,7 @@ export default function LeadForm({
             required
           />
           <span>
-            I consent to Dr.M.Sha Wellness &amp; Aesthetics Clinic using my photo
+            I consent to O.D. Aesthetics using my photo
             to generate this analysis and contacting me about treatments. My photo
             is processed to create the result and is not stored.
           </span>

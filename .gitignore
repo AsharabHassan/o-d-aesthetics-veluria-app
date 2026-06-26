@@ -38,3 +38,8 @@ next-env.d.ts
 
 # Playwright MCP test artifacts (screenshots/snapshots)
 .playwright-mcp/
+
+# Root-level QA screenshots / capture artifacts (not app assets)
+/*.png
+/*.jpeg
+/*.pdf

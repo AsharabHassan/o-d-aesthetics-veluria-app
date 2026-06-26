@@ -7,42 +7,39 @@ type Review = {
   name: string;
 };
 
+// Genuine O.D. Aesthetics reviews from Google & Instagram (odaesthetics-swindon.com).
 const REVIEWS: Review[] = [
   {
-    text: "Had a procedure to remove a mole from my back . Everything was explained to me from the initial phone call to the procedure on the day . Two visits and all done even a follow up text before Dr went on holiday to make sure everything was ok . Great service and would recommend.",
-    name: "Julian Buckley",
+    text: "Olivia is the most amazing person. I had a panic about where to get my B12 injection after being let down several times by my GP practice, and Olivia stepped in straight away.",
+    name: "Steve Haddon",
   },
   {
-    text: "Dr Sha made my first experience with dermal fillers very comfortable and I am ecstatic with my results. She fixed the asymmetry in my top lip and I now feel much more confident when I smile.",
-    name: "Jizelle Kamga",
+    text: "O.D. Aesthetics-Swindon offer a professional, efficient, friendly service. Having used the service for vitamin B12 monthly injections for over 4 years, I can highly recommend.",
+    name: "Joanna Bains",
   },
   {
-    text: "Dr Sha literally saved my face!!! I had bad filler put in elsewhere and it migrated onto one side of my jaw. I couldn’t believe how bad the filler was with Dr Sha having to do two dissolving sessions. I will never trust anyone else other than Dr Sha, who has made me feel confident again in my own skin.",
-    name: "Millie Johnson",
+    text: "Absolutely amazing experience! The results exceeded my expectations. My Botox is smooth and natural, and my filler is beautifully balanced.",
+    name: "Simona",
   },
   {
-    text: "I cannot recommend Dr Sha enough! I have had 3 treatments with her and not only am I impressed with results I am also hugely impressed with the entire process and experience.\nI only wanted to have facial treatments from a doctor, Dr Sha is so qualified and will alay any fears you may have whilst also acknowledging potential side effects. She is able to look at a face know exactly which small tweaks will give you that rested and rejuvenated look within an immaculate clinic.\nI have had botox on my forehead, naso-labial filler and 0.5 lip filler of 2 seperate appointments and although I was not after compliments from other people I have had so many comments about how young/ welI look! Yet the results Dr Sha acheives are natural and subtle- nobody has asked me if I have had a specific treatment done.\nThis is your face- spend that bit extra and get top products adminsitered by someone who is at the top of their game you will not be disappointed!",
-    name: "Lucy Marie",
+    text: "Olivia is amazing! I've had lip filler treatments with her and the results are always beautiful and natural-looking.",
+    name: "Elena Emma",
   },
   {
-    text: "I recently completed a Cosmelan treatment at M Sha Aesthetic Clinic, and I am extremely happy with my experience and the results! From the moment I walked in, dr M. Sha made me feel completely at ease. She explained the entire process clearly, answered all my questions, and gave me excellent aftercare instructions.\nThe treatment itself was smooth and comfortable, and I’ve noticed a significant improvement in my skin tone and pigmentation. My skin looks much brighter, clearer, and more even now. I truly appreciate the team’s expertise and care throughout the journey.\nThank you, M Sha Aesthetic Clinic, for helping me achieve such beautiful results! I highly recommend this clinic to anyone considering Cosmelan or other aesthetic treatments.",
-    name: "Sona Varghese",
+    text: "Every visit reminds me why I trust you, Olivia. You always take the time to listen and never overdo it. The result is subtle, natural, and exactly right.",
+    name: "Florina Stan",
   },
   {
-    text: "Dr sha is wonderful, explains everything precisely, put me at complete ease and I would highly recommend her to you.",
-    name: "Pauline Lockley",
+    text: "Absolutely amazing service! From the moment I walked in, I felt welcomed and cared for. The treatments were performed with great professionalism.",
+    name: "Emanuela B.",
   },
   {
-    text: "Thank you for your wonderful feedback, Aaron! We’re thrilled to hear that you had a great experience with our service. Your kind words motivate us to keep delivering the best care. We look forward to welcoming you again!",
-    name: "Aaron Nash",
+    text: "Lovely place to be, and Olivia is very friendly and professional. I would highly recommend her to everyone.",
+    name: "Adelaida Ada",
   },
   {
-    text: "Dr Sha is friendly, professional and very knowledgeable,she takes her time to explain your options, is concerned about your comfort during treatment and aftercare. It can be daunting deciding on a treatment and you can be confident that with Dr Sha you are in safe hands.",
-    name: "Carole Cluer",
-  },
-  {
-    text: "The care Dr Sha provides is exceptional, she runs through every step of the treatment with you to ensure you are reassured and understand the full process of the treatment. The after care is amazing, with regular contact to discuss your recovery and any questions you may have. I am also completely blown away from my results of just one treatment of neogen.",
-    name: "Joy Rodriguez",
+    text: "You were amazing — such care taken during the procedure, and I absolutely love the results! Can't wait for the 0.5ml top up. Thank you so much xx",
+    name: "Verified Instagram client",
   },
 ];
 

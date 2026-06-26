@@ -134,14 +134,10 @@ export default function Home() {
     <main className="relative min-h-dvh">
       <header className="relative z-10">
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-1 px-6 pt-8">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/drsha-logo.jpg"
-            alt="Dr.M.Sha Wellness and Aesthetics Clinic"
-            className="h-14 w-auto"
-            draggable={false}
-          />
-          <p className="text-[0.6rem] uppercase tracking-couture text-plum-mute">
+          <span className="font-display text-[1.9rem] leading-none text-plum sm:text-[2.25rem]">
+            O.D. Aesthetics
+          </span>
+          <p className="mt-1 text-[0.6rem] uppercase tracking-couture text-plum-mute">
             AI Skin Consultation
           </p>
         </div>
@@ -165,9 +161,9 @@ export default function Home() {
               className="mx-auto mt-7 max-w-md animate-fade-scale text-balance text-plum-soft"
               style={{ animationDelay: "240ms" }}
             >
-              One photograph. A doctor-grade skin analysis, a professional
+              One photograph. An expert-grade skin analysis, a professional
               treatment map, and a personalised preview of your results — from{" "}
-              <span className="font-medium text-plum">Dr.M.Sha Wellness &amp; Aesthetics Clinic</span>.
+              <span className="font-medium text-plum">O.D. Aesthetics</span>.
             </p>
             <div
               className="mt-10 flex animate-fade-scale flex-col items-center gap-4"
@@ -267,8 +263,8 @@ export default function Home() {
       </div>
 
       <footer className={`relative z-10 mx-auto max-w-5xl px-6 text-center text-[0.65rem] uppercase tracking-[0.14em] text-plum-mute/70 ${step === "result" ? "pb-24" : "pb-10"}`}>
-        © {new Date().getFullYear()} Dr.M.Sha Wellness &amp; Aesthetics Clinic · A
-        cosmetic, non-diagnostic AI simulation · Not medical advice
+        © {new Date().getFullYear()} O.D. Aesthetics · Swindon · A cosmetic,
+        non-diagnostic AI simulation · Not medical advice
       </footer>
     </main>
   );

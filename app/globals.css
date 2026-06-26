@@ -19,15 +19,15 @@
   }
 
   ::selection {
-    background: rgba(22, 179, 198, 0.28);
-    color: #211e52;
+    background: rgba(231, 219, 142, 0.45);
+    color: #1A1A1A;
   }
 
   ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #e8ebf7;
+    background: #F5F1E4;
   }
   ::-webkit-scrollbar-thumb {
     background: #9E9E9E;
@@ -196,29 +196,29 @@
     @apply font-display font-light leading-[0.98] tracking-[-0.01em];
   }
   .serum-text {
-    color: #3F3E3E;
+    color: #9A7B1F;
   }
   .hairline {
     @apply h-px w-full;
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(22, 179, 198, 0.45),
+      rgba(154, 123, 31, 0.4),
       transparent
     );
   }
 
-  /* ---- Buttons (Dr.M.Sha: solid black primary, grey ghost) ---- */
+  /* ---- Buttons (O.D. Aesthetics: gold primary, outline ghost) ---- */
   .btn-serum {
     @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-9 py-4 text-[0.75rem] font-semibold uppercase tracking-[0.18em] transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50;
-    color: #ffffff;
-    background: #212121;
-    box-shadow: 0 4px 14px -4px rgba(0, 0, 0, 0.25);
+    color: #1A1A1A;
+    background: #E7DB8E;
+    box-shadow: 0 4px 14px -4px rgba(154, 123, 31, 0.35);
   }
   .btn-serum:hover:not(:disabled) {
-    background: #3F3E3E;
+    background: #DCCB66;
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 6px 20px -4px rgba(154, 123, 31, 0.45);
   }
   .btn-serum::after {
     content: none;
@@ -434,7 +434,7 @@
   }
   body {
     background: #fff !important;
-    color: #211e52 !important;
+    color: #1A1A1A !important;
   }
   .glass,
   .glass-soft {

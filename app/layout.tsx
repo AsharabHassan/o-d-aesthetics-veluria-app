@@ -20,9 +20,9 @@ const sans = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "AI Skin Consultation | Dr.M.Sha Wellness & Aesthetics Clinic",
+  title: "AI Skin Consultation | O.D. Aesthetics",
   description:
-    "A complimentary AI skin consultation by Dr.M.Sha Wellness and Aesthetics Clinic — an in-depth skin analysis, a professional treatment map, and a personalised preview of your results.",
+    "A complimentary AI skin consultation by O.D. Aesthetics, Swindon — an in-depth skin analysis, a professional treatment map, and a personalised preview of your results.",
 };
 
 export default function RootLayout({
@@ -67,8 +67,8 @@ export default function RootLayout({
               width: "50vmax",
               height: "50vmax",
               background:
-                "radial-gradient(circle at 50% 50%, #E1EFF0, #d4e8ea 55%, transparent 72%)",
-              opacity: 0.4,
+                "radial-gradient(circle at 50% 50%, #FBF5DF, #F3EAC8 55%, transparent 72%)",
+              opacity: 0.45,
               filter: "blur(70px)",
             }}
           />

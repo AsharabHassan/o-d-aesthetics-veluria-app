@@ -8,23 +8,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Dr.M.Sha Wellness & Aesthetics Clinic palette
-        // White canvas · warm cream · charcoal text · muted teal accent
+        // O.D. Aesthetics — Swindon
+        // White canvas · charcoal text · signature gold accent · near-black
         pearl: {
           DEFAULT: "#FFFFFF",  // pure white canvas
-          deep: "#FBF8F3",     // warm cream (section backgrounds)
+          deep: "#FAF8F1",     // faint warm off-white (section backgrounds)
         },
-        peach: "#F4F4F4",     // light grey (subtle backgrounds)
+        peach: "#F5F1E4",     // pale gold-tinted background
         rose: "#9E9E9E",      // mid grey
-        amber: "#9E9E9E",     // mid grey (gradient partner of serum in legacy code)
-        lilac: "#F4F4F4",     // light grey
-        sun: "#F4F4F4",       // light grey
+        amber: "#E7DB8E",     // O.D. signature gold (legacy gradient partner)
+        lilac: "#F5F1E4",     // pale gold tint
+        sun: "#F6EFD2",       // soft gold wash
         plum: {
-          DEFAULT: "#212121", // near-black (primary text / headings)
+          DEFAULT: "#1A1A1A", // near-black (primary text / headings)
           soft: "#3F3E3E",    // dark charcoal
-          mute: "#9E9E9E",    // mid grey
+          mute: "#8A8A8A",    // mid grey
         },
-        serum: "#6B9FA4",     // muted teal (subtle accent only)
+        gold: {
+          DEFAULT: "#E7DB8E", // O.D. signature gold (fills / CTA)
+          deep: "#9A7B1F",    // legible gold for text & accents on white
+          soft: "#F6EFD2",    // pale gold tint (washes)
+        },
+        serum: "#9A7B1F",     // accent alias → deep gold (text-safe)
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],

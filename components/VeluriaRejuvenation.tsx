@@ -9,7 +9,7 @@ type Benefit = {
   icon: ReactNode;
 };
 
-/* Inline icons keep the serum-teal line style consistent with the rest of the app. */
+/* Inline icons keep the gold accent line style consistent with the rest of the app. */
 const stroke = {
   fill: "none",
   stroke: "currentColor",
@@ -134,10 +134,10 @@ export default function VeluriaRejuvenation({
       </h3>
       <p className="mt-4 max-w-2xl leading-relaxed text-plum">
         Veluria is an advanced <strong className="font-semibold">PB Serum
-        enzyme-based bio-remodelling treatment</strong>. Rather than sitting on the
-        surface, its enzymes work <em>within</em> your skin — gently restructuring
-        and renewing it from the deeper layers, so your complexion looks firmer,
-        fresher and naturally rejuvenated.
+        enzyme-based bio-remodelling treatment</strong>, offered at O.D. Aesthetics.
+        Rather than sitting on the surface, its enzymes work <em>within</em> your
+        skin — gently restructuring and renewing it from the deeper layers, so
+        your complexion looks firmer, fresher and naturally rejuvenated.
       </p>
 
       {/* Personalised focus — pulled from this patient's lowest scores */}

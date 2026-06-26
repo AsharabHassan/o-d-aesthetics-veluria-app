@@ -17,12 +17,12 @@ import {
 } from "@/lib/download";
 
 const BOOKING_URL =
-  process.env.NEXT_PUBLIC_BOOKING_URL ?? "https://drmshaclinic.com";
+  process.env.NEXT_PUBLIC_BOOKING_URL ?? "https://odaesthetics-swindon.com/";
 
-// Dr Sha's online booking calendar for the complimentary phone consultation.
+// O.D. Aesthetics booking link for the complimentary consultation.
 const CALENDAR_URL =
   process.env.NEXT_PUBLIC_CALENDAR_URL ??
-  "https://link.drmshaclinic.com/widget/booking/AkcdoWX6eMf2yJvKs6fp";
+  "https://odaesthetics-swindon.com/";
 
 function PhoneConsultButton({
   variant = "primary",
@@ -46,7 +46,7 @@ function PhoneConsultButton({
           strokeLinejoin="round"
         />
       </svg>
-      Free Online Phone Consultation
+      Book a Free Consultation
     </a>
   );
 }
@@ -224,7 +224,7 @@ export default function AnalysisReport({
   const handleDownloadBeforeAfter = async () => {
     if (!after) return;
     const composite = await composeBeforeAfter(before, after);
-    downloadDataUrl(composite, "drsha-before-after.png");
+    downloadDataUrl(composite, "od-aesthetics-before-after.png");
   };
 
   return (
@@ -270,7 +270,7 @@ export default function AnalysisReport({
         <div className="mt-6 flex flex-col items-center gap-2">
           <PhoneConsultButton />
           <p className="text-xs text-plum-mute">
-            Discuss your preview with Dr Sha — no cost, no obligation.
+            Discuss your preview with Olivia — no cost, no obligation.
           </p>
         </div>
       </section>
@@ -295,7 +295,7 @@ export default function AnalysisReport({
           <p className="mt-4 text-center text-xs italic text-plum-mute">
             Markers show areas identified for treatment, drawn on your simulated
             result. AI-estimated for guidance only — not a clinical diagnosis.
-            A consultation with Dr Sha confirms the right plan for you.
+            A consultation with Olivia confirms the right plan for you.
           </p>
         </section>
       )}
@@ -319,7 +319,7 @@ export default function AnalysisReport({
                   <div className="mt-1.5 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                     <p className="text-xs text-plum-soft">{c.note}</p>
                     {expected && (
-                      <span className="whitespace-nowrap rounded-full bg-[#E1EFF0] px-2.5 py-0.5 text-[0.7rem] font-medium text-[#3a7a80]">
+                      <span className="whitespace-nowrap rounded-full bg-[#F6EFD2] px-2.5 py-0.5 text-[0.7rem] font-medium text-[#8a6d1f]">
                         {expected.kind === "softened"
                           ? `Lines ${expected.label}`
                           : `Expected ${expected.label}`}
@@ -333,7 +333,7 @@ export default function AnalysisReport({
         </div>
       </section>
 
-      {/* Veluria rejuvenation — how Veluria helps this patient */}
+      {/* Veluria rejuvenation — how Veluria (at O.D. Aesthetics) helps this patient */}
       <section className="animate-fade-scale" style={{ animationDelay: "200ms" }}>
         <VeluriaRejuvenation
           categories={analysis.categories}
@@ -345,7 +345,7 @@ export default function AnalysisReport({
       <section className="animate-fade-scale" style={{ animationDelay: "205ms" }}>
         <div className="mb-6 text-center">
           <p className="eyebrow">Real results</p>
-          <h3 className="display mt-2 text-3xl text-plum">A Dr Sha before &amp; after</h3>
+          <h3 className="display mt-2 text-3xl text-plum">An O.D. Aesthetics before &amp; after</h3>
         </div>
         <CaseStudy />
         <div className="mt-6 flex justify-center">
@@ -357,7 +357,7 @@ export default function AnalysisReport({
       <section className="animate-fade-scale" style={{ animationDelay: "210ms" }}>
         <div className="mb-6 text-center">
           <p className="eyebrow">Loved by patients</p>
-          <h3 className="display mt-2 text-3xl text-plum">What people say about Dr Sha</h3>
+          <h3 className="display mt-2 text-3xl text-plum">What people say about O.D. Aesthetics</h3>
         </div>
         <ReviewsSlider />
       </section>
@@ -440,7 +440,7 @@ export default function AnalysisReport({
                     lightbox,
                     lightbox === mapImage
                       ? "skin-assessment-map.png"
-                      : "drsha-before-after.png",
+                      : "od-aesthetics-before-after.png",
                   )
                 }
                 className="btn-serum"

@@ -1,6 +1,6 @@
-export const ANALYSIS_SYSTEM_PROMPT = `You are a senior aesthetic skin consultant at Dr.M.Sha Wellness and Aesthetics Clinic, a doctor-led UK aesthetics clinic specialising in natural results and medically precise treatments. A prospective patient has uploaded a selfie for a complimentary AI skin assessment.
+export const ANALYSIS_SYSTEM_PROMPT = `You are a senior aesthetic skin consultant at O.D. Aesthetics, a science-led aesthetics clinic in Swindon specialising in natural results and precise, minimally invasive treatments. A prospective client has uploaded a selfie for a complimentary AI skin assessment.
 
-Assess the visible skin in the photo and produce a warm, professional, confidence-building analysis rooted in doctor-led precision. You are NOT a doctor: do not diagnose medical conditions, name diseases, or make clinical claims. Frame everything as a cosmetic, non-diagnostic observation of visible skin appearance.
+Assess the visible skin in the photo and produce a warm, professional, confidence-building analysis rooted in science-led precision. You are NOT a doctor: do not diagnose medical conditions, name diseases, or make clinical claims. Frame everything as a cosmetic, non-diagnostic observation of visible skin appearance.
 
 Score five categories from 0-100, where 100 means the skin already looks its healthiest for that category and lower scores indicate more visible room for improvement:
 - Hydration: plumpness, dewiness, dryness/flakiness
@@ -10,22 +10,22 @@ Score five categories from 0-100, where 100 means the skin already looks its hea
 - Radiance: overall glow, luminosity, dullness
 
 Then write:
-- summary: 2-3 supportive sentences describing what you observe overall, using a confident but approachable doctor-led tone.
+- summary: 2-3 supportive sentences describing what you observe overall, using a confident but approachable, science-led tone.
 - annotations: 4 to 7 specific points on the face marking areas you would focus on, like a consultant pointing at a mirror. For each, give:
     - x and y: the location as a PERCENTAGE of the photo (x = 0 left edge to 100 right edge, y = 0 top edge to 100 bottom edge). Estimate carefully from where the feature actually sits on THIS face. Spread points across the relevant areas; do not stack them.
     - area: the correct aesthetic-medicine term. Use terms from this set where applicable: "Forehead lines", "Glabella / frown lines", "Periorbital lines (crow's feet)", "Tear trough / under-eye", "Cheek hydration & glow", "Nasolabial folds", "Marionette lines", "Perioral (lip) lines", "Skin texture & pores", "Uneven tone / pigmentation", "Visible redness", "Jawline & lower-face skin laxity".
     - concern: one short phrase on what is visibly observed there.
-    - treatment: a brief, honest suggestion tailored to Dr.M.Sha's treatment menu. Use these guidelines:
-        * For overall skin hydration, dullness, fine lines, skin quality and bio-remodelling: recommend Profhilo (a premium injectable skin booster that deeply hydrates, firms and remodels the skin from within).
+    - treatment: a brief, honest suggestion tailored to O.D. Aesthetics' treatment menu. Use these guidelines:
+        * For overall skin hydration, dullness, fine lines, skin quality and bio-remodelling: recommend Veluria (an advanced PB Serum enzyme-based skin booster that works within the skin to deeply hydrate, firm and bio-remodel it from the deeper layers); Profhilo is a complementary skin-booster option.
         * For skin radiance, texture and cellular renewal: recommend Polynucleotides or PRP (Platelet Rich Plasma) which uses the patient's own growth factors to stimulate collagen and improve skin quality.
         * For dynamic lines (forehead, frown, crow's feet): recommend anti-wrinkle injections (Botulinum Toxin), note a consultation to confirm suitability.
         * For deep static folds, volume loss or lip definition: recommend dermal fillers and note a consultation.
-        * For skin texture, pores and resurfacing: recommend Neogen Plasma or medical-grade facials available at the clinic.
+        * For skin texture, pores and resurfacing: recommend RF microneedling, chemical peels or medical-grade facials available at the clinic.
         * For pigmentation and tone: recommend a personalised medical-grade skincare plan (Obagi, ZO Skin Health, Revision) plus a skin consultation.
         * For skin laxity and collagen stimulation: recommend HArmonyCa by Allergan (a dual-action calcium hydroxyapatite filler with biostimulator properties) and note a consultation.
         Always be honest and never guarantee outcomes.
     - severity: "low", "moderate", or "notable".
-- veluriaRecommendation: 2-3 sentences explaining how a personalised treatment plan from Dr.M.Sha Wellness and Aesthetics Clinic could specifically help THIS person's lowest-scoring areas. Reference the most relevant treatments by name (e.g. Profhilo, PRP, anti-wrinkle injections) based on the observed concerns. Be specific to the observations, encouraging and warm, never guaranteeing results. End with a gentle invitation to book a consultation.
+- veluriaRecommendation: 2-3 sentences explaining how a personalised treatment plan from O.D. Aesthetics could specifically help THIS person's lowest-scoring areas. Where skin quality, hydration, dullness or bio-remodelling is involved, feature Veluria (the PB Serum enzyme-based skin booster) as the lead recommendation; otherwise reference the most relevant treatments by name (e.g. Veluria, Profhilo, PRP, anti-wrinkle injections) based on the observed concerns. Be specific to the observations, encouraging and warm, never guaranteeing results. End with a gentle invitation to book a consultation.
 
 Rules:
 - If the image is not a usable face photo (no face, too dark, not a person), respond ONLY with: {"error":"no_face"}
@@ -113,14 +113,14 @@ export function buildAfterImagePrompt(
   // When annotate is set, the SAME image also carries the treatment-map
   // pointers, so one generation serves both the slider and the map container.
   const pointerBlock = annotate
-    ? `\n\nFINALLY, ADD A TIDY TREATMENT-MAP OVERLAY on this same treated photo: for each treated area below, place a small neat circular marker dot on that exact part of the face, with a thin hairline leader line to a small, crisply printed, correctly-spelled label in the empty space AROUND the face — never over the eyes or covering features. Each label is just the area name. Keep it minimal, elegant and perfectly legible, like a premium Sirona Aesthetics clinic treatment diagram in soft cyan and deep indigo — no clutter, no legend. The markers must sit on top of the retouched skin without hiding the improvement underneath.\nTREATED AREAS TO MARK:\n${list.map((c) => `- ${c.area}`).join("\n")}`
+    ? `\n\nFINALLY, ADD A TIDY TREATMENT-MAP OVERLAY on this same treated photo: for each treated area below, place a small neat circular marker dot on that exact part of the face, with a thin hairline leader line to a small, crisply printed, correctly-spelled label in the empty space AROUND the face — never over the eyes or covering features. Each label is just the area name. Keep it minimal, elegant and perfectly legible, like a premium O.D. Aesthetics clinic treatment diagram in soft gold and charcoal — no clutter, no legend. The markers must sit on top of the retouched skin without hiding the improvement underneath.\nTREATED AREAS TO MARK:\n${list.map((c) => `- ${c.area}`).join("\n")}`
     : "";
 
   const referenceLine = hasReferences
     ? `\n\nREFERENCE IMAGES: any image AFTER the first shows REAL skin following aesthetic treatment — match that realistic treated-skin texture, tone and glow. Do NOT copy the reference people's identity or features in any way.`
     : "";
 
-  return `Professional beauty-retouch of the SAME person in the FIRST image, showing how their skin realistically looks after a personalised course of aesthetic skin treatments at Dr.M.Sha Wellness and Aesthetics Clinic.
+  return `Professional beauty-retouch of the SAME person in the FIRST image, showing how their skin realistically looks after a personalised course of aesthetic skin treatments at O.D. Aesthetics.
 
 THE RESULT — their skin is now visibly healthier, and the improvement must be CLEARLY noticeable next to the original (a near-identical, "no change" result is a failure):
 - a soft, dewy, light-reflective glow — luminous and lit-from-within, not flat or dull
@@ -195,5 +195,5 @@ Add a small, tidy legend in a corner: red = high, amber = medium, green = low at
 ZONES (area - attention level):
 ${lines}
 
-Style: Dr.M.Sha Wellness and Aesthetics Clinic — minimal, precise, clean and uncluttered, like a doctor's treatment-planning diagram. Tidy leader lines, labels around the edges, nothing crowding the face. No watermark, no logo.`;
+Style: O.D. Aesthetics — minimal, precise, clean and uncluttered, like a professional treatment-planning diagram. Tidy leader lines, labels around the edges, nothing crowding the face. No watermark, no logo.`;
 }

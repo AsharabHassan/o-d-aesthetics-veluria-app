@@ -45,7 +45,7 @@ function PortraitCompare({ before, after }: { before: string; after: string }) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={after}
-        alt="After treatment with Dr Sha"
+        alt="Facial rejuvenation — after"
         className="absolute inset-0 h-full w-full object-cover"
         draggable={false}
       />
@@ -71,7 +71,7 @@ function PortraitCompare({ before, after }: { before: string; after: string }) {
 
       {/* Handle */}
       <div
-        className="pointer-events-none absolute top-0 h-full w-0.5 bg-white/90 shadow-[0_0_14px_rgba(22,179,198,0.7)]"
+        className="pointer-events-none absolute top-0 h-full w-0.5 bg-white/90 shadow-[0_0_14px_rgba(154,123,31,0.5)]"
         style={{ left: `${pos}%` }}
       >
         <div
@@ -103,15 +103,15 @@ export default function CaseStudy() {
 
         {/* Write-up */}
         <div>
-          <p className="eyebrow">Real patient · Case study</p>
+          <p className="eyebrow">Treatment example</p>
           <h4 className="display mt-2 text-2xl text-plum sm:text-3xl">
             Facial rejuvenation
           </h4>
           <p className="mt-4 leading-relaxed text-plum">
-            A bespoke facial rejuvenation plan designed by Dr Sha — softening
-            fine lines, restoring lost volume and refreshing overall skin tone
-            for a naturally rested, more youthful result that still looks like
-            you.
+            An illustration of the kind of bespoke facial rejuvenation plan
+            offered at O.D. Aesthetics — softening fine lines, restoring lost
+            volume and refreshing overall skin tone for a naturally rested, more
+            youthful result that still looks like you.
           </p>
 
           <div className="mt-5 flex flex-wrap gap-2">
@@ -126,8 +126,8 @@ export default function CaseStudy() {
           </div>
 
           <p className="mt-5 text-xs italic text-plum-mute">
-            Real patient of Dr Sha. Eyes covered for privacy. Individual results
-            vary and are not guaranteed.
+            Illustrative example for demonstration only. Individual results vary
+            and are not guaranteed.
           </p>
         </div>
       </div>

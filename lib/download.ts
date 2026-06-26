@@ -144,12 +144,12 @@ export async function downloadAnalysisPdf(opts: {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(16);
   doc.setTextColor(33, 33, 33);
-  doc.text("DR.M.SHA WELLNESS & AESTHETICS CLINIC", margin, y);
+  doc.text("O.D. AESTHETICS", margin, y);
   y += 16;
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
-  doc.setTextColor(107, 159, 164);
-  doc.text("AI Skin Consultation · drmshaclinic.com", margin, y);
+  doc.setTextColor(154, 123, 31);
+  doc.text("AI Skin Consultation · odaesthetics-swindon.com", margin, y);
   y += 16;
   doc.setDrawColor(180, 180, 180);
   doc.line(margin, y, pageW - margin, y);
@@ -200,7 +200,7 @@ export async function downloadAnalysisPdf(opts: {
     y += size + 16;
   }
 
-  heading("How Dr Sha can help");
+  heading("How O.D. Aesthetics can help");
   body(analysis.veluriaRecommendation);
 
   ensure(30);
@@ -211,5 +211,5 @@ export async function downloadAnalysisPdf(opts: {
   ensure(dis.length * 10);
   doc.text(dis, margin, y);
 
-  doc.save("DrMSha-Skin-Consultation.pdf");
+  doc.save("OD-Aesthetics-Skin-Consultation.pdf");
 }
