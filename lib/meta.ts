@@ -3,7 +3,7 @@
 // event_id so Meta can deduplicate them.
 
 export const META_PIXEL_ID =
-  process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "823507040655170";
+  process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "2207166730106189";
 
 declare global {
   interface Window {
