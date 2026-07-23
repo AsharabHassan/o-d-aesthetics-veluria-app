@@ -109,8 +109,8 @@ export default function CaseStudy() {
           </h4>
           <p className="mt-4 leading-relaxed text-plum">
             An illustration of the kind of bespoke facial rejuvenation plan
-            offered at O.D. Aesthetics — softening fine lines, restoring lost
-            volume and refreshing overall skin tone for a naturally rested, more
+            offered at O.D. Aesthetics — softening fine lines, firming
+            and refining the skin and evening overall tone for a naturally rested, more
             youthful result that still looks like you.
           </p>
 
